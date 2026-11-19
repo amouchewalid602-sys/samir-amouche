@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#efe5d3">
+  <meta name="description" content="Portfolio professionnel de Samir Amouche, boulanger et pâtissier à Paris.">
+  <title>Samir Amouche | Boulanger & Pâtissier</title>
+  <style>
+    :root{
+      --paper:#f5efe4;--paper2:#ebe0ce;--ink:#34271f;--muted:#76675a;
+      --brown:#684832;--gold:#ad8954;--line:#d9cbb7;--white:#fffdf8;
+      --shadow:0 16px 42px rgba(55,38,24,.09)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    button,select,input{font:inherit}
+    .topbar{position:sticky;top:0;z-index:10;background:rgba(245,239,228,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1120px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-size:1.12rem;letter-spacing:.13em;font-weight:bold}
+    .brand small{display:block;font-size:.63rem;letter-spacing:.22em;color:var(--muted);font-weight:normal}
+    .nav-right{display:flex;align-items:center;gap:18px}
+    .links{display:flex;gap:18px;font: .83rem Arial,sans-serif;color:var(--muted)}
+    .links a:hover{color:var(--gold)}
+    select{border:1px solid var(--line);background:var(--white);color:var(--ink);padding:8px 10px;border-radius:3px}
+    .hero{max-width:1120px;margin:0 auto;padding:74px 22px 62px;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+    .eyebrow{font: .72rem Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:bold}
+    h1{font-size:clamp(2.7rem,6vw,5.4rem);line-height:1.02;letter-spacing:.025em;margin:15px 0;color:var(--brown);font-weight:normal}
+    .role{font-size:1.22rem;color:var(--muted);font-style:italic}
+    .intro{max-width:540px;color:var(--muted);margin:22px 0 28px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;border:1px solid var(--brown);padding:11px 18px;border-radius:2px;font: .82rem Arial,sans-serif;letter-spacing:.04em;cursor:pointer}
+    .btn.primary{background:var(--brown);color:var(--white)}
+    .btn:hover{transform:translateY(-1px)}
+    .hero-art{min-height:390px;position:relative;background:linear-gradient(145deg,#d8c3a2,#a9835c);box-shadow:var(--shadow);overflow:hidden;display:grid;place-items:center}
+    .hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid rgba(255,253,248,.55);inset:18px}
+    .hero-art:after{inset:28px}
+    .bread-mark{font-size:clamp(5rem,13vw,10rem);filter:grayscale(1);opacity:.82}
+    .art-caption{position:absolute;bottom:38px;z-index:1;color:#fffaf0;font: .7rem Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;text-align:center}
+    .section{padding:68px 22px}
+    .section.alt{background:var(--paper2)}
+    .inner{max-width:1000px;margin:auto}
+    .section-head{text-align:center;margin-bottom:34px}
+    h2{font-size:2.15rem;font-weight:normal;color:var(--brown);margin:7px 0}
+    .rule{width:62px;height:1px;background:var(--gold);margin:15px auto}
+    .about{max-width:760px;margin:auto;text-align:center;color:var(--muted);font-size:1.05rem}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:34px}
+    .stat{background:var(--white);border:1px solid var(--line);padding:22px 12px;text-align:center}
+    .stat strong{display:block;font-size:1.5rem;color:var(--brown);font-weight:normal}
+    .stat span{font: .75rem Arial,sans-serif;color:var(--muted)}
+    .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .skill{border:1px solid var(--line);background:rgba(255,253,248,.65);padding:20px}
+    .skill h3{font-size:1.15rem;color:var(--brown);font-weight:normal;margin:0 0 8px}
+    .skill p{font: .88rem/1.7 Arial,sans-serif;color:var(--muted);margin:0}
+    .experience{max-width:760px;margin:auto;border-left:1px solid var(--gold);padding:5px 0 5px 25px}
+    [dir="rtl"] .experience{border-left:0;border-right:1px solid var(--gold);padding:5px 25px 5px 0}
+    .experience h3{font-weight:normal;color:var(--brown);font-size:1.25rem;margin:0}
+    .experience p{color:var(--muted);margin:8px 0}
+    .lang-list{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .lang{border:1px solid var(--line);background:var(--white);padding:12px 17px;min-width:145px;text-align:center}
+    .lang strong{display:block;color:var(--brown);font-weight:normal}
+    .lang span{font: .76rem Arial,sans-serif;color:var(--muted)}
+    .gallery-tools{text-align:center;margin:0 0 20px;color:var(--muted);font: .85rem Arial,sans-serif}
+    .gallery-tools input{max-width:100%;margin-top:10px}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .photo{min-height:190px;background:var(--white);border:1px dashed #bba88e;display:grid;place-items:center;text-align:center;padding:15px;color:var(--muted);overflow:hidden}
+    .photo img{width:100%;height:220px;object-fit:cover}
+    .photo span{font: .8rem Arial,sans-serif}
+    .contact-card{max-width:680px;margin:auto;text-align:center;background:var(--white);border:1px solid var(--line);padding:30px;box-shadow:var(--shadow)}
+    .contact-card p{color:var(--muted)}
+    footer{text-align:center;padding:25px;color:var(--muted);font: .75rem Arial,sans-serif;border-top:1px solid var(--line)}
+    .note{font: .75rem/1.6 Arial,sans-serif;color:var(--muted);margin-top:16px}
+    @media(max-width:760px){
+      .links{display:none}.hero{grid-template-columns:1fr;padding-top:48px;gap:28px}.hero-art{min-height:260px}
+      .skills{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:480px){
+      .nav{padding:11px 14px}.brand{font-size:.95rem}.nav-right{gap:8px}
+      .hero{padding-left:17px;padding-right:17px}.stats{grid-template-columns:1fr}
+      .skills{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}
+      .section{padding:52px 17px}h2{font-size:1.8rem}
+    }
+    @media print{
+      .topbar,.actions,.gallery-tools,footer{display:none!important}
+      body{background:white}.section,.section.alt{background:white;padding:25px 0}
+      .hero{padding:25px 0}.hero-art{min-height:170px;box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav">
+    <a class="brand" href="#home">SAMIR AMOUCHE<small>PORTFOLIO PROFESSIONNEL</small></a>
+    <div class="nav-right">
+      <div class="links">
+        <a href="#about" data-i18n="navAbout">À propos</a>
+        <a href="#skills" data-i18n="navSkills">Compétences</a>
+        <a href="#experience" data-i18n="navExperience">Expérience</a>
+        <a href="#gallery" data-i18n="navGallery">Galerie</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </div>
+      <select id="language" aria-label="Choose language">
+        <option value="fr">Français</option><option value="ar">العربية</option>
+        <option value="en">English</option><option value="es">Español</option>
+      </select>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div>
+      <div class="eyebrow" data-i18n="eyebrow">Artisan boulangerie & pâtisserie</div>
+      <h1>Samir<br>Amouche</h1>
+      <div class="role" data-i18n="role">Boulanger & Pâtissier</div>
+      <p class="intro" data-i18n="intro">Professionnel de la boulangerie et de la pâtisserie, avec une expérience acquise au fil du travail dans différentes boulangeries.</p>
+      <div class="actions">
+        <a class="btn primary" href="#experience" data-i18n="viewCv">Voir mon parcours</a>
+        <button class="btn" onclick="window.print()" data-i18n="printCv">Imprimer / PDF</button>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Illustration décorative">
+      <div class="bread-mark">✳</div>
+      <div class="art-caption" data-i18n="artCaption">Le savoir-faire artisanal</div>
+    </div>
+  </section>
+
+  <section class="section alt" id="about">
+    <div class="inner">
+      <div class="section-head"><div class="eyebrow" data-i18n="aboutEyebrow">Présentation</div><h2 data-i18n="aboutTitle">À propos</h2><div class="rule"></div></div>
+      <p class="about" data-i18n="aboutText">Samir Amouche est boulanger et pâtissier à Paris, en France. Son parcours professionnel lui a permis de développer des compétences en boulangerie, viennoiserie, pâtisserie, préparation des pâtes et décoration de desserts. Il a acquis son savoir-faire par l'expérience et le travail au sein de différentes boulangeries.</p>
+      <div class="stats">
+        <div class="stat"><strong>5–10</strong><span data-i18n="years">Années d'expérience déclarées</span></div>
+        <div class="stat"><strong>Paris</strong><span data-i18n="location">France</span></div>
+        <div class="stat"><strong>4</strong><span data-i18n="languages">Langues parlées</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="inner">
+      <div class="section-head"><div class="eyebrow" data-i18n="skillsEyebrow">Savoir-faire</div><h2 data-i18n="skillsTitle">Compétences professionnelles</h2><div class="rule"></div></div>
+      <div class="skills">
+        <article class="skill"><h3 data-i18n="skill1Title">Boulangerie</h3><p data-i18n="skill1">Baguette française, pains traditionnels, pains spéciaux et céréales.</p></article>
+        <article class="skill"><h3 data-i18n="skill2Title">Viennoiserie</h3><p data-i18n="skill2">Croissants et spécialités de viennoiserie française.</p></article>
+        <article class="skill"><h3 data-i18n="skill3Title">Pâtisserie</h3><p data-i18n="skill3">Pâtisseries françaises, gâteaux, tartes et décoration.</p></article>
+        <article class="skill"><h3 data-i18n="skill4Title">Préparation des pâtes</h3><p data-i18n="skill4">Préparation des pâtes et procédés de fermentation.</p></article>
+        <article class="skill"><h3 data-i18n="skill5Title">Pizzas & tartes salées</h3><p data-i18n="skill5">Préparation de pizzas et de tartes salées.</p></article>
+        <article class="skill"><h3 data-i18n="skill6Title">Finition & décoration</h3><p data-i18n="skill6">Finition et décoration de produits de pâtisserie.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="experience">
+    <div class="inner">
+      <div class="section-head"><div class="eyebrow" data-i18n="experienceEyebrow">Parcours</div><h2 data-i18n="experienceTitle">Expérience professionnelle</h2><div class="rule"></div></div>
+      <div class="experience">
+        <h3 data-i18n="jobTitle">Boulanger & Pâtissier</h3>
+        <p><strong>Paris, France</strong> · <span data-i18n="currentWork">Travail au sein d'une boulangerie</span></p>
+        <p data-i18n="experienceText">Entre 5 et 10 ans d'expérience professionnelle déclarée, acquise dans différentes boulangeries. Les dates, les noms des établissements et les postes occupés pourront être ajoutés après confirmation.</p>
+        <h3 data-i18n="trainingTitle">Formation professionnelle</h3>
+        <p data-i18n="trainingText">Savoir-faire acquis par l'expérience professionnelle et la pratique du métier.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="languages">
+    <div class="inner">
+      <div class="section-head"><div class="eyebrow" data-i18n="languageEyebrow">Communication</div><h2 data-i18n="languageTitle">Langues</h2><div class="rule"></div></div>
+      <div class="lang-list">
+        <div class="lang"><strong data-i18n="arabic">Arabe</strong><span data-i18n="native">Langue maternelle</span></div>
+        <div class="lang"><strong data-i18n="french">Français</strong><span data-i18n="veryGood">Très bon</span></div>
+        <div class="lang"><strong data-i18n="english">Anglais</strong><span data-i18n="intermediate">Intermédiaire</span></div>
+        <div class="lang"><strong data-i18n="spanish">Espagnol</strong><span data-i18n="intermediate">Intermédiaire</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="gallery">
+    <div class="inner">
+      <div class="section-head"><div class="eyebrow" data-i18n="galleryEyebrow">Réalisations</div><h2 data-i18n="galleryTitle">Galerie de réalisations</h2><div class="rule"></div></div>
+      <div class="gallery-tools">
+        <span data-i18n="galleryHelp">Ajoutez ici les photos réelles des créations de Samir.</span><br>
+        <input id="photoInput" type="file" accept="image/*" multiple>
+        <div class="note" data-i18n="galleryNote">Les aperçus sont affichés sur cet appareil. Pour publier les photos sur un site en ligne, il faudra ensuite les ajouter aux fichiers du site.</div>
+      </div>
+      <div class="gallery" id="galleryGrid">
+        <div class="photo"><span data-i18n="photoPlaceholder1">Photo de baguettes et pains</span></div>
+        <div class="photo"><span data-i18n="photoPlaceholder2">Photo de croissants et viennoiseries</span></div>
+        <div class="photo"><span data-i18n="photoPlaceholder3">Photo de pâtisseries et gâteaux</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="inner">
+      <div class="section-head"><div class="eyebrow" data-i18n="contactEyebrow">Prise de contact</div><h2 data-i18n="contactTitle">Contact</h2><div class="rule"></div></div>
+      <div class="contact-card">
+        <h3>Samir Amouche</h3>
+        <p data-i18n="contactText">Pour toute opportunité professionnelle, les coordonnées pourront être ajoutées ici avec l'accord de Samir.</p>
+        <p><strong>Paris, France</strong></p>
+        <div class="note" data-i18n="contactNote">Adresse e-mail et téléphone à compléter. Aucune coordonnée personnelle n'est publiée pour le moment.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> Samir Amouche · <span data-i18n="footer">Portfolio professionnel</span></footer>
+
+<script>
+const translations = {
+fr:{
+navAbout:"À propos",navSkills:"Compétences",navExperience:"Expérience",navGallery:"Galerie",navContact:"Contact",
+eyebrow:"Artisan boulangerie & pâtisserie",role:"Boulanger & Pâtissier",
+intro:"Professionnel de la boulangerie et de la pâtisserie, avec une expérience acquise au fil du travail dans différentes boulangeries.",
+viewCv:"Voir mon parcours",printCv:"Imprimer / PDF",artCaption:"Le savoir-faire artisanal",
+aboutEyebrow:"Présentation",aboutTitle:"À propos",
+aboutText:"Samir Amouche est boulanger et pâtissier à Paris, en France. Son parcours professionnel lui a permis de développer des compétences en boulangerie, viennoiserie, pâtisserie, préparation des pâtes et décoration de desserts. Il a acquis son savoir-faire par l'expérience et le travail au sein de différentes boulangeries.",
+years:"Années d'expérience déclarées",location:"France",languages:"Langues parlées",
+skillsEyebrow:"Savoir-faire",skillsTitle:"Compétences professionnelles",
+skill1Title:"Boulangerie",skill1:"Baguette française, pains traditionnels, pains spéciaux et céréales.",
+skill2Title:"Viennoiserie",skill2:"Croissants et spécialités de viennoiserie française.",
+skill3Title:"Pâtisserie",skill3:"Pâtisseries françaises, gâteaux, tartes et décoration.",
+skill4Title:"Préparation des pâtes",skill4:"Préparation des pâtes et procédés de fermentation.",
+skill5Title:"Pizzas & tartes salées",skill5:"Préparation de pizzas et de tartes salées.",
+skill6Title:"Finition & décoration",skill6:"Finition et décoration de produits de pâtisserie.",
+experienceEyebrow:"Parcours",experienceTitle:"Expérience professionnelle",jobTitle:"Boulanger & Pâtissier",
+currentWork:"Travail au sein d'une boulangerie",
+experienceText:"Entre 5 et 10 ans d'expérience professionnelle déclarée, acquise dans différentes boulangeries. Les dates, les noms des établissements et les postes occupés pourront être ajoutés après confirmation.",
+trainingTitle:"Formation professionnelle",trainingText:"Savoir-faire acquis par l'expérience professionnelle et la pratique du métier.",
+languageEyebrow:"Communication",languageTitle:"Langues",arabic:"Arabe",native:"Langue maternelle",french:"Français",veryGood:"Très bon",english:"Anglais",spanish:"Espagnol",intermediate:"Intermédiaire",
+galleryEyebrow:"Réalisations",galleryTitle:"Galerie de réalisations",galleryHelp:"Ajoutez ici les photos réelles des créations de Samir.",
+galleryNote:"Les aperçus sont affichés sur cet appareil. Pour publier les photos sur un site en ligne, il faudra ensuite les ajouter aux fichiers du site.",
+photoPlaceholder1:"Photo de baguettes et pains",photoPlaceholder2:"Photo de croissants et viennoiseries",photoPlaceholder3:"Photo de pâtisseries et gâteaux",
+contactEyebrow:"Prise de contact",contactTitle:"Contact",contactText:"Pour toute opportunité professionnelle, les coordonnées pourront être ajoutées ici avec l'accord de Samir.",
+contactNote:"Adresse e-mail et téléphone à compléter. Aucune coordonnée personnelle n'est publiée pour le moment.",footer:"Portfolio professionnel"
+},
+ar:{
+navAbout:"نبذة عنه",navSkills:"المهارات",navExperience:"الخبرة",navGallery:"معرض الأعمال",navContact:"التواصل",
+eyebrow:"حِرَفي في صناعة الخبز والحلويات",role:"خباز وحلّواني",
+intro:"متخصص في صناعة الخبز والحلويات، اكتسب خبرته المهنية من خلال العمل في مخابز مختلفة.",
+viewCv:"استعراض المسار المهني",printCv:"طباعة / PDF",artCaption:"حِرفية وإتقان",
+aboutEyebrow:"التعريف",aboutTitle:"نبذة عن سمير",
+aboutText:"سمير عموش خباز وحلّواني يعمل في باريس بفرنسا. طوّر مهاراته في صناعة الخبز والمعجنات والحلويات وتحضير العجين وتزيين الحلويات. اكتسب خبرته من خلال الممارسة والعمل في مخابز مختلفة.",
+years:"سنوات الخبرة المعلنة",location:"فرنسا",languages:"اللغات",
+skillsEyebrow:"الخبرات والمهارات",skillsTitle:"المهارات المهنية",
+skill1Title:"صناعة الخبز",skill1:"الباغيت الفرنسي والخبز التقليدي والخبز الخاص وخبز الحبوب.",
+skill2Title:"المعجنات الفرنسية",skill2:"الكرواسون ومختلف أنواع المعجنات الفرنسية.",
+skill3Title:"الحلويات",skill3:"الحلويات الفرنسية والكيك والتورتات والتزيين.",
+skill4Title:"تحضير العجين",skill4:"تحضير أنواع العجين وعمليات التخمير.",
+skill5Title:"البيتزا والفطائر",skill5:"تحضير البيتزا والفطائر المالحة.",
+skill6Title:"التشطيب والتزيين",skill6:"تشطيب منتجات الحلويات وتزيينها.",
+experienceEyebrow:"المسار المهني",experienceTitle:"الخبرة المهنية",jobTitle:"خباز وحلّواني",
+currentWork:"العمل لدى مخبزة",
+experienceText:"خبرة مهنية معلنة تتراوح بين 5 و10 سنوات، اكتسبها من العمل في مخابز مختلفة. يمكن إضافة التواريخ وأسماء المخابز والمسميات الوظيفية بعد التأكد منها.",
+trainingTitle:"التكوين المهني",trainingText:"اكتساب المهارات من خلال الخبرة المهنية والممارسة العملية للمهنة.",
+languageEyebrow:"التواصل",languageTitle:"اللغات",arabic:"العربية",native:"اللغة الأم",french:"الفرنسية",veryGood:"جيد جداً",english:"الإنجليزية",spanish:"الإسبانية",intermediate:"متوسط",
+galleryEyebrow:"الأعمال",galleryTitle:"معرض الأعمال",galleryHelp:"أضف هنا الصور الحقيقية لأعمال سمير.",
+galleryNote:"تظهر معاينات الصور على هذا الجهاز. لنشرها على موقع إلكتروني، يجب إضافتها لاحقاً إلى ملفات الموقع.",
+photoPlaceholder1:"صورة للباغيت والخبز",photoPlaceholder2:"صورة للكرواسون والمعجنات",photoPlaceholder3:"صورة للحلويات والكيك",
+contactEyebrow:"التواصل المهني",contactTitle:"التواصل",contactText:"يمكن إضافة معلومات التواصل هنا لاستقبال الفرص المهنية، بعد موافقة سمير.",
+contactNote:"يُضاف البريد الإلكتروني ورقم الهاتف لاحقاً. لا توجد معلومات شخصية منشورة حالياً.",footer:"الملف المهني الإلكتروني"
+},
+en:{
+navAbout:"About",navSkills:"Skills",navExperience:"Experience",navGallery:"Gallery",navContact:"Contact",
+eyebrow:"Artisan baking & pastry",role:"Baker & Pastry Chef",
+intro:"A baking and pastry professional whose skills have been developed through hands-on work in different bakeries.",
+viewCv:"View experience",printCv:"Print / PDF",artCaption:"Artisan craftsmanship",
+aboutEyebrow:"Profile",aboutTitle:"About",
+aboutText:"Samir Amouche is a baker and pastry chef working in Paris, France. His professional experience has helped him develop skills in bread making, viennoiserie, pastry, dough preparation and dessert decoration. He has developed his craft through practical work in different bakeries.",
+years:"Reported years of experience",location:"France",languages:"Languages spoken",
+skillsEyebrow:"Know-how",skillsTitle:"Professional skills",
+skill1Title:"Bread making",skill1:"French baguettes, traditional breads, specialty breads and grain breads.",
+skill2Title:"Viennoiserie",skill2:"Croissants and French viennoiserie specialties.",
+skill3Title:"Pastry",skill3:"French pastries, cakes, tarts and decoration.",
+skill4Title:"Dough preparation",skill4:"Dough preparation and fermentation processes.",
+skill5Title:"Pizzas & savoury tarts",skill5:"Preparation of pizzas and savoury tarts.",
+skill6Title:"Finishing & decoration",skill6:"Finishing and decorating pastry products.",
+experienceEyebrow:"Career",experienceTitle:"Professional experience",jobTitle:"Baker & Pastry Chef",
+currentWork:"Working in a bakery",
+experienceText:"Reported professional experience of 5 to 10 years, gained in different bakeries. Dates, bakery names and job titles can be added once confirmed.",
+trainingTitle:"Professional training",trainingText:"Skills developed through professional experience and practical work.",
+languageEyebrow:"Communication",languageTitle:"Languages",arabic:"Arabic",native:"Native",french:"French",veryGood:"Very good",english:"English",spanish:"Spanish",intermediate:"Intermediate",
+galleryEyebrow:"Work samples",galleryTitle:"Work gallery",galleryHelp:"Add real photos of Samir's creations here.",
+galleryNote:"Image previews appear on this device. To publish them online, add the image files to the website files later.",
+photoPlaceholder1:"Baguettes and bread photo",photoPlaceholder2:"Croissants and viennoiserie photo",photoPlaceholder3:"Pastries and cakes photo",
+contactEyebrow:"Get in touch",contactTitle:"Contact",contactText:"Professional contact details can be added here with Samir's permission.",
+contactNote:"Email address and phone number to be added. No personal contact details are published yet.",footer:"Professional portfolio"
+},
+es:{
+navAbout:"Sobre mí",navSkills:"Competencias",navExperience:"Experiencia",navGallery:"Galería",navContact:"Contacto",
+eyebrow:"Artesano de panadería y pastelería",role:"Panadero y pastelero",
+intro:"Profesional de la panadería y la pastelería que ha desarrollado sus habilidades trabajando en diferentes panaderías.",
+viewCv:"Ver trayectoria",printCv:"Imprimir / PDF",artCaption:"El saber hacer artesanal",
+aboutEyebrow:"Perfil",aboutTitle:"Sobre Samir",
+aboutText:"Samir Amouche es panadero y pastelero y trabaja en París, Francia. Su trayectoria le ha permitido desarrollar competencias en panadería, bollería, pastelería, preparación de masas y decoración de postres. Ha adquirido sus conocimientos mediante la experiencia y el trabajo en diferentes panaderías.",
+years:"Años de experiencia declarados",location:"Francia",languages:"Idiomas",
+skillsEyebrow:"Saber hacer",skillsTitle:"Competencias profesionales",
+skill1Title:"Panadería",skill1:"Baguette francesa, panes tradicionales, panes especiales y cereales.",
+skill2Title:"Bollería",skill2:"Cruasanes y especialidades de bollería francesa.",
+skill3Title:"Pastelería",skill3:"Pastelería francesa, tartas, pasteles y decoración.",
+skill4Title:"Preparación de masas",skill4:"Preparación de masas y procesos de fermentación.",
+skill5Title:"Pizzas y tartas saladas",skill5:"Preparación de pizzas y tartas saladas.",
+skill6Title:"Acabado y decoración",skill6:"Acabado y decoración de productos de pastelería.",
+experienceEyebrow:"Trayectoria",experienceTitle:"Experiencia profesional",jobTitle:"Panadero y pastelero",
+currentWork:"Trabajo en una panadería",
+experienceText:"Entre 5 y 10 años de experiencia profesional declarada, adquirida en diferentes panaderías. Las fechas, los nombres de los establecimientos y los puestos podrán añadirse tras su confirmación.",
+trainingTitle:"Formación profesional",trainingText:"Conocimientos adquiridos mediante la experiencia profesional y la práctica del oficio.",
+languageEyebrow:"Comunicación",languageTitle:"Idiomas",arabic:"Árabe",native:"Lengua materna",french:"Francés",veryGood:"Muy bueno",english:"Inglés",spanish:"Español",intermediate:"Intermedio",
+galleryEyebrow:"Trabajos",galleryTitle:"Galería de trabajos",galleryHelp:"Añade aquí fotos reales de las creaciones de Samir.",
+galleryNote:"Las vistas previas se muestran en este dispositivo. Para publicarlas en línea, habrá que añadir los archivos de imagen al sitio.",
+photoPlaceholder1:"Foto de baguettes y panes",photoPlaceholder2:"Foto de cruasanes y bollería",photoPlaceholder3:"Foto de pasteles y tartas",
+contactEyebrow:"Contacto profesional",contactTitle:"Contacto",contactText:"Los datos de contacto podrán añadirse aquí con el consentimiento de Samir.",
+contactNote:"Correo electrónico y teléfono pendientes. Por ahora no se publica ningún dato personal.",footer:"Portafolio profesional"
+}
+};
+const langSelect=document.getElementById("language");
+function setLanguage(lang){
+ const t=translations[lang]||translations.fr;
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+   const key=el.getAttribute("data-i18n");
+   if(t[key]) el.textContent=t[key];
+ });
+ langSelect.value=lang;
+}
+langSelect.addEventListener("change",e=>setLanguage(e.target.value));
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("photoInput").addEventListener("change",function(e){
+ const files=Array.from(e.target.files||[]);
+ const grid=document.getElementById("galleryGrid");
+ files.forEach(file=>{
+   if(!file.type.startsWith("image/")) return;
+   const reader=new FileReader();
+   reader.onload=event=>{
+     const card=document.createElement("div");
+     card.className="photo";
+     const img=document.createElement("img");
+     img.src=event.target.result;
+     img.alt=file.name;
+     card.replaceChildren(img);
+     grid.appendChild(card);
+   };
+   reader.readAsDataURL(file);
+ });
+});
+setLanguage("fr");
+</script>
+</body>
+</html>
